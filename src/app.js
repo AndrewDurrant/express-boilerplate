@@ -18,4 +18,17 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello, World!' });
 });
 
+app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
+  let message; // eslint-disable-line no-unused-vars
+  if (process.env.NODE_ENV === 'production') {
+    message = 'Server error';
+  } else {
+    console.log(error);
+    message = error.message;
+  }
+  res.status(500).json({ error: error.message });
+});
+
+// if no route matches, return 404 with HTML page - Express default route
+
 module.exports = app;
