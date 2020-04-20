@@ -3,7 +3,6 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const { v4: uuidv4 } = require('uuid');
 
 const { NODE_ENV } = require('./config');
 
@@ -18,7 +17,7 @@ app.use(helmet());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Greetings, Nematodes!' });
+  res.json({ message: 'Hello, World!' });
 });
 
 app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
